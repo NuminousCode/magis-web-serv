@@ -111,7 +111,10 @@ const handleSubmit = async (e) => {
 
             const sendResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
                 method: 'POST',
-                body: formDataToSend
+                body: formDataToSend,
+                headers: {
+                    'Accept': 'application/json'
+                }
             });
             
             if (!sendResponse.ok) {
