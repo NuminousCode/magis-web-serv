@@ -113,7 +113,8 @@ const handleSubmit = async (e) => {
                 method: 'POST',
                 body: formDataToSend,
                 headers: {
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 }
             });
             
