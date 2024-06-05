@@ -8,11 +8,13 @@ const port = process.env.PORT || 3001;
 app.get('/', (req, res) => (res.sendFile(path.join(__dirname, 'public/index.html') )));
 
 app.get('/data', (req, res) => {
-    const accessToken = process.env.ACCESS_TOKEN;
-    const spaceId = process.env.SPACE_ID;
+    const serviceId = process.env.SERVICE_ID;
+    const templateId = process.env.TEMPLATE_ID;
+    const publicKey = process.env.PUBLIC_KEY;
     const data = {
-        accessToken,
-        spaceId,
+        serviceId,
+        templateId,
+        publicKey
     };
     res.json(data);
 });
