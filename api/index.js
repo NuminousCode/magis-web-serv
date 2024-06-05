@@ -1,11 +1,18 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const path = require('path');
 
 dotenv.config();
 
 const port = process.env.PORT || 3001;
-app.get('/', (req, res) => (res.sendFile(path.join(__dirname, 'public/index.html') )));
+
+// Serve static files from the root directory
+app.use(express.static(__dirname));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.get('/data', (req, res) => {
     const serviceId = process.env.SERVICE_ID;
