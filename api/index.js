@@ -17,7 +17,12 @@ app.get('/data', (req, res) => {
         templateId,
         publicKey
     };
-    res.json(data);
+    res.json({
+        "serviceId": "your_service_id",
+        "templateId": "your_template_id",
+        "publicKey": "your_public_key"
+      }
+      );
 });
 
 // Serve static files from the 'public' directory
