@@ -11442,3 +11442,32 @@ background-color: rgba(12, 16, 31, .2);
   border: none;
 }
 
+.phone-email{
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.phone-email > *{
+  margin: 0;
+}
+
+.phone-email > p a {
+  text-decoration: none;
+  color: white;
+}
+
+@media(max-width: 760px){
+  .phone-email{
+    padding: 0;
+    margin: 20px 0 0 0;
+  }
+  .phone-email > *{
+    margin: 10px;
+    text-align: center;
+    line-height: 20px;
+  }
+}
