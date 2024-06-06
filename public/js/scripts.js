@@ -99,7 +99,6 @@ const fetchEnvVariables = async () => {
 };
 
 const handleSubmit = async (e) => {
-    
     e.preventDefault();
     if (validateForm()) {
         try {
@@ -122,6 +121,7 @@ const handleSubmit = async (e) => {
             // const { serviceId, templateId, publicKey } = data;
             
             const env = await fetchEnvVariables();
+            console.log(env)
             const serviceId = env.serviceId;
             const templateId = env.templateId;
             const publicKey = env.publicKey;
@@ -130,15 +130,15 @@ const handleSubmit = async (e) => {
             formDataToSend.append('template_id', templateId);
             formDataToSend.append('user_id', publicKey);
 
-            const sendResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
-                method: 'POST',
-                body: formDataToSend,
+            // const sendResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
+            //     method: 'POST',
+            //     body: formDataToSend,
                 
-            });
+            // });
             
-            if (!sendResponse.ok) {
-                throw new Error('Failed to send email');
-            }
+            // if (!sendResponse.ok) {
+            //     throw new Error('Failed to send email');
+            // }
             
         } catch (error) {
             alert('Oops... ' + error.message);
