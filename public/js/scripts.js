@@ -85,18 +85,18 @@ const validateForm = () => {
     return true;
 };
 
-const fetchEnvVariables = async () => {
-    try {
-        const response = await fetch('https://env-variables.oracle942.workers.dev/');
-        if (!response.ok) {
-            throw new Error('Failed to fetch environment variables');
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching environment variables:', error);
-    }
-};
+// const fetchEnvVariables = async () => {
+//     try {
+//         const response = await fetch('https://env-variables.oracle942.workers.dev/');
+//         if (!response.ok) {
+//             throw new Error('Failed to fetch environment variables');
+//         }
+//         const data = await response.json();
+//         return data;
+//     } catch (error) {
+//         console.error('Error fetching environment variables:', error);
+//     }
+// };
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -120,25 +120,30 @@ const handleSubmit = async (e) => {
             // console.log(data)
             // const { serviceId, templateId, publicKey } = data;
             
-            const env = await fetchEnvVariables();
-            console.log(env)
-            const serviceId = env.serviceId;
-            const templateId = env.templateId;
-            const publicKey = env.publicKey;
+            // const env = await fetchEnvVariables();
+            // console.log(env)
+
+            const serviceId = 'service_unejne8';
+            const templateId = 'template_0mmtnxl';
+            const publicKey = 'qn0fZOYhWEb0Qr1Vl';
+            
+            // const serviceId = env.serviceId;
+            // const templateId = env.templateId;
+            // const publicKey = env.publicKey;
 
             formDataToSend.append('service_id', serviceId);
             formDataToSend.append('template_id', templateId);
             formDataToSend.append('user_id', publicKey);
 
-            // const sendResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
-            //     method: 'POST',
-            //     body: formDataToSend,
+            const sendResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
+                method: 'POST',
+                body: formDataToSend,
                 
-            // });
+            });
             
-            // if (!sendResponse.ok) {
-            //     throw new Error('Failed to send email');
-            // }
+            if (!sendResponse.ok) {
+                throw new Error('Failed to send email');
+            }
             
         } catch (error) {
             alert('Oops... ' + error.message);
