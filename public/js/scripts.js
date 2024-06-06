@@ -85,6 +85,19 @@ const validateForm = () => {
     return true;
 };
 
+const fetchEnvVariables = async () => {
+    try {
+        const response = await fetch('https://env-variables.oracle942.workers.dev/');
+        if (!response.ok) {
+            throw new Error('Failed to fetch environment variables');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching environment variables:', error);
+    }
+};
+
 const handleSubmit = async (e) => {
     
     e.preventDefault();
@@ -98,13 +111,21 @@ const handleSubmit = async (e) => {
                 document.getElementById('submitSuccessMessage').classList.add('d-none');
             }, 5000);
 
-            const response = await fetch('/data');
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-            const data = await response.json();
-            const { serviceId, templateId, publicKey } = data;
+            // const response = await fetch('/data');
+            // console.log(response)
+            // if (!response.ok) {
+            //     console.log('Response not OK:', response.statusText);
+            //     throw new Error('Failed to fetch data');
+            // }
+            // const data = await response.json();
+            // console.log(data)
+            // const { serviceId, templateId, publicKey } = data;
             
+            const env = await fetchEnvVariables();
+            const serviceId = env.serviceId;
+            const templateId = env.templateId;
+            const publicKey = env.publicKey;
+
             formDataToSend.append('service_id', serviceId);
             formDataToSend.append('template_id', templateId);
             formDataToSend.append('user_id', publicKey);
@@ -112,10 +133,7 @@ const handleSubmit = async (e) => {
             const sendResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
                 method: 'POST',
                 body: formDataToSend,
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
+                
             });
             
             if (!sendResponse.ok) {
