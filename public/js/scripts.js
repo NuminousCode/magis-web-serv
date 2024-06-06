@@ -120,7 +120,7 @@ const handleSubmit = async (e) => {
             // console.log(data)
             // const { serviceId, templateId, publicKey } = data;
             
-            // const env = await fetchEnvVariables();
+            const env = await fetchEnvVariables();
             // console.log(env)
 
             // const serviceId = 'service_unejne8';
