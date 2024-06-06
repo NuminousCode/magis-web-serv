@@ -85,18 +85,18 @@ const validateForm = () => {
     return true;
 };
 
-// const fetchEnvVariables = async () => {
-//     try {
-//         const response = await fetch('https://env-variables.oracle942.workers.dev/');
-//         if (!response.ok) {
-//             throw new Error('Failed to fetch environment variables');
-//         }
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.error('Error fetching environment variables:', error);
-//     }
-// };
+const fetchEnvVariables = async () => {
+    try {
+        const response = await fetch('https://env-variables.oracle942.workers.dev/');
+        if (!response.ok) {
+            throw new Error('Failed to fetch environment variables');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching environment variables:', error);
+    }
+};
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -123,13 +123,13 @@ const handleSubmit = async (e) => {
             // const env = await fetchEnvVariables();
             // console.log(env)
 
-            const serviceId = 'service_unejne8';
-            const templateId = 'template_0mmtnxl';
-            const publicKey = 'qn0fZOYhWEb0Qr1Vl';
+            // const serviceId = 'service_unejne8';
+            // const templateId = 'template_0mmtnxl';
+            // const publicKey = 'qn0fZOYhWEb0Qr1Vl';
             
-            // const serviceId = env.serviceId;
-            // const templateId = env.templateId;
-            // const publicKey = env.publicKey;
+            const serviceId = env.serviceId;
+            const templateId = env.templateId;
+            const publicKey = env.publicKey;
 
             formDataToSend.append('service_id', serviceId);
             formDataToSend.append('template_id', templateId);
