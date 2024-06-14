@@ -11482,7 +11482,6 @@ background-color: rgba(12, 16, 31, .2);
         opacity: 0;
         transition: opacity 1s ease-in-out;
     }
-    
 
     .bg-placeholder img{
       position: fixed;

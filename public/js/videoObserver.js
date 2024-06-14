@@ -4,4 +4,4 @@ document.addEventListener('DOMContentLoaded', function() {
     video.addEventListener('canplaythrough', function() {
         video.style.opacity = '1';
     }, false);
-});``
+});
