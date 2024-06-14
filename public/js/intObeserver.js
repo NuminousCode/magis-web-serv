@@ -1,4 +1,4 @@
-const useImageIntersectionObserver = (callback, delay = 0, threshold) => {
+const useImageIntersectionObserver = (callback, delay, threshold) => {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -15,7 +15,7 @@ const useImageIntersectionObserver = (callback, delay = 0, threshold) => {
   
   // Usage example:
   document.querySelectorAll('.col-md-4').forEach((col, index) => {
-    const threshold = .1;
+    var threshold = .05;
     let delay
     const callback = (target) => {
       target.style.transform = "translateY(0px)";
@@ -24,6 +24,7 @@ const useImageIntersectionObserver = (callback, delay = 0, threshold) => {
     if (index < 3){
          delay = (index + 1) * 150; 
     } else {
+      threshold = .01
         delay = (index - 2) * 150
     }
     
