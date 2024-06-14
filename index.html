@@ -22,6 +22,24 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="./public/css/styles.css" rel="stylesheet" />
+        <style>
+            #bgVideo {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+#bgPlaceholder img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  filter: blur(5px);
+  transform: scale(1.1, 1.1);
+  object-fit: cover;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -503,6 +521,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="./public/js/scripts.js"></script>
+        <!-- Observers-->
         <script src="./public/js/intObeserver.js"></script>
         <script src="./public/js/videoObserver.js"></script>
     </body>
