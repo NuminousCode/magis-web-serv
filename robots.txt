@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /public/
+
+Sitemap: https://magiswebservices.com/sitemap.xml
